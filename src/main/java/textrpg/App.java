@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import textrpg.game.GameScene;
+import textrpg.game.Option;
+import textrpg.game.SceneController;
 
 import java.io.IOException;
 
@@ -32,7 +35,24 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
-    }
+        // launch();
 
+        SceneController sceneController = new SceneController();
+
+        GameScene startingScene = new GameScene("A Journey's First Step",
+                "Our hero boldly ventures out into the world.");
+
+        Option exploreForest = new Option("Explore the forest", "Venture into the forest to gather supplies",
+                "Found: Wild Game");
+        Option buildCampsite = new Option("Prepare campsite",
+                "Gather materials from the immediate area and build a campsite for the night", "Health Restored");
+        Option goHome = new Option("Go back home",
+                "You know, maybe this adventuring stuff isn't really for me. I'm just gonna head home.", "The End");
+
+        Option[] actions = new Option[] { exploreForest, buildCampsite, goHome };
+
+        startingScene.setActions(actions);
+
+        sceneController.playScene(startingScene);
+    }
 }
