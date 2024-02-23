@@ -1,4 +1,4 @@
-package textrpg;
+package textrpg.utils;
 
 import java.util.Arrays;
 
