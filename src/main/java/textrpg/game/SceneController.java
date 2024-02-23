@@ -3,7 +3,7 @@ package textrpg.game;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import textrpg.Utils;
+import textrpg.utils.Utils;
 
 public class SceneController {
     Scanner in;

@@ -1,7 +1,10 @@
-package textrpg;
+package textrpg.utils;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import textrpg.utils.Utils;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UtilsTest {
