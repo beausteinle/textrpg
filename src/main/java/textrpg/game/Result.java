@@ -1,10 +1,16 @@
 package textrpg.game;
 
 public class Result {
-    String text;
+    private String text;
+    private GameScene nextScene;
 
-    public Result(String text) {
+    public Result(GameScene nextScene, String text) {
+        this.nextScene = nextScene;
         this.text = text;
+    }
+
+    public GameScene getNextScene() {
+        return nextScene;
     }
 
     public String getOutcome() {
