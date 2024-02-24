@@ -1,6 +1,5 @@
 package textrpg.game;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import textrpg.utils.Utils;
@@ -25,7 +24,7 @@ public class SceneController {
 
         displayOptions(scene.getActions());
 
-        System.out.println(getSelection(scene.getActions()).getResult().getOutcome());
+        System.out.println(getSelection(scene.getActions()).getResult().getResultDescription());
     }
 
     public void displayOptions(Option[] actions) {
