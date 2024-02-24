@@ -26,7 +26,7 @@ public class SceneController {
 
         displayOptions(scene.getActions());
 
-        System.out.println(getSelection(scene.getActions()).getResult().getOutcome());
+        System.out.println(getSelection(scene.getActions()).getResult().getResultDescription());
     }
 
     public void displayOptions(Action[] actions) {
