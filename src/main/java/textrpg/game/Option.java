@@ -3,13 +3,12 @@ package textrpg.game;
 public class Option {
     String title;
     String description;
-
     Result result;
 
-    public Option(String title, String description, String result) {
+    public Option(String title, String description, Result result) {
         this.title = title;
         this.description = description;
-        this.result = new Result(result);
+        this.result = result;
     }
 
     public String getOptionText() {

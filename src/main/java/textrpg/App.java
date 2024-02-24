@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import textrpg.game.GameScene;
 import textrpg.game.Option;
+import textrpg.game.Result;
 import textrpg.game.SceneController;
 
 import java.io.IOException;
@@ -43,11 +44,11 @@ public class App extends Application {
                 "Our hero boldly ventures out into the world.");
 
         Option exploreForest = new Option("Explore the forest", "Venture into the forest to gather supplies",
-                "Found: Wild Game");
+               new Result("You find a thing"));
         Option buildCampsite = new Option("Prepare campsite",
-                "Gather materials from the immediate area and build a campsite for the night", "Health Restored");
+                "Gather materials from the immediate area and build a campsite for the night", new Result("You camped overnight"));
         Option goHome = new Option("Go back home",
-                "You know, maybe this adventuring stuff isn't really for me. I'm just gonna head home.", "The End");
+                "You know, maybe this adventuring stuff isn't really for me. I'm just gonna head home.", new Result("Game End"));
 
         Option[] actions = new Option[] { exploreForest, buildCampsite, goHome };
 

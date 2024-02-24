@@ -1,13 +1,25 @@
 package textrpg.game;
 
 public class Result {
-    String text;
 
-    public Result(String text) {
-        this.text = text;
+
+    private String resultDescription;
+    private GameScene nextScene;
+
+    public Result(GameScene nextScene, String resultDescription) {
+        this.nextScene = nextScene;
+        this.resultDescription = resultDescription;
     }
 
-    public String getOutcome() {
-        return text;
+    public Result(String resultDescription){
+        this.resultDescription = resultDescription;
+    }
+
+    public GameScene getNextScene() {
+        return nextScene;
+    }
+
+    public String getResultDescription() {
+        return resultDescription;
     }
 }
