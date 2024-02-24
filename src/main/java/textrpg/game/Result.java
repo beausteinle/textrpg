@@ -11,6 +11,10 @@ public class Result {
         this.resultDescription = resultDescription;
     }
 
+    public Result(String resultDescription){
+        this.resultDescription = resultDescription;
+    }
+
     public GameScene getNextScene() {
         return nextScene;
     }
