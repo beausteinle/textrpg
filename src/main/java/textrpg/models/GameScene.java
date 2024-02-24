@@ -1,14 +1,18 @@
-package textrpg.game;
+package textrpg.models;
 
 public class GameScene {
     String title;
     String description;
 
-    Option[] actions;
+    Action[] actions;
 
     public GameScene(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public GameScene() {
+        this("Empty Scene", "");
     }
 
     public String getTitle() {
@@ -19,11 +23,11 @@ public class GameScene {
         return description;
     }
 
-    public void setActions(Option[] actions) {
+    public void setActions(Action[] actions) {
         this.actions = actions;
     }
 
-    public Option[] getActions() {
+    public Action[] getActions() {
         return actions;
     }
 }

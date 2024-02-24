@@ -1,12 +1,12 @@
-package textrpg.game;
+package textrpg.models;
 
-public class Option {
+public class Action {
     String title;
     String description;
 
     Result result;
 
-    public Option(String title, String description, String result) {
+    public Action(String title, String description, String result) {
         this.title = title;
         this.description = description;
         this.result = new Result(result);

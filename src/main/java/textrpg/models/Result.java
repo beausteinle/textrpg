@@ -1,4 +1,4 @@
-package textrpg.game;
+package textrpg.models;
 
 public class Result {
     String text;

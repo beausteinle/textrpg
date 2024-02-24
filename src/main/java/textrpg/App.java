@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import textrpg.game.GameScene;
-import textrpg.game.Option;
+import textrpg.dao.implementations.GameSceneDAOImpl;
+import textrpg.dao.interfaces.GameSceneDAO;
 import textrpg.game.SceneController;
+import textrpg.models.GameScene;
+import textrpg.models.Action;
 
 import java.io.IOException;
 
@@ -39,17 +41,20 @@ public class App extends Application {
 
         SceneController sceneController = new SceneController();
 
-        GameScene startingScene = new GameScene("A Journey's First Step",
-                "Our hero boldly ventures out into the world.");
+        GameSceneDAO gsDAO = new GameSceneDAOImpl();
 
-        Option exploreForest = new Option("Explore the forest", "Venture into the forest to gather supplies",
+        // GameScene startingScene = new GameScene("A Journey's First Step",
+        // "Our hero boldly ventures out into the world.");
+        GameScene startingScene = gsDAO.getById(1);
+
+        Action exploreForest = new Action("Explore the forest", "Venture into the forest to gather supplies",
                 "Found: Wild Game");
-        Option buildCampsite = new Option("Prepare campsite",
+        Action buildCampsite = new Action("Prepare campsite",
                 "Gather materials from the immediate area and build a campsite for the night", "Health Restored");
-        Option goHome = new Option("Go back home",
+        Action goHome = new Action("Go back home",
                 "You know, maybe this adventuring stuff isn't really for me. I'm just gonna head home.", "The End");
 
-        Option[] actions = new Option[] { exploreForest, buildCampsite, goHome };
+        Action[] actions = new Action[] { exploreForest, buildCampsite, goHome };
 
         startingScene.setActions(actions);
 
