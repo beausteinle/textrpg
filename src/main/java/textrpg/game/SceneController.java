@@ -2,6 +2,8 @@ package textrpg.game;
 
 import java.util.Scanner;
 
+import textrpg.models.GameScene;
+import textrpg.models.Action;
 import textrpg.utils.Utils;
 
 public class SceneController {
@@ -27,7 +29,7 @@ public class SceneController {
         System.out.println(getSelection(scene.getActions()).getResult().getResultDescription());
     }
 
-    public void displayOptions(Option[] actions) {
+    public void displayOptions(Action[] actions) {
         String message = "What would you like to do?";
         System.out.println(message);
         System.out.println(Utils.getBorderString(message));
@@ -36,7 +38,7 @@ public class SceneController {
         }
     }
 
-    public Option getSelection(Option[] actions) {
+    public Action getSelection(Action[] actions) {
         System.out.print("What are you going to do:");
         int selection = in.nextInt();
         return actions[selection - 1];

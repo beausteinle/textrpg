@@ -27,7 +27,6 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-
         <!-- JUnit Jupiter Engine to run the tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -35,7 +34,12 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.45.1.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
