@@ -1,17 +1,17 @@
 package textrpg.models;
 
-public class GameScene {
+public class Scene {
     String title;
     String description;
 
     Action[] actions;
 
-    public GameScene(String title, String description) {
+    public Scene(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    public GameScene() {
+    public Scene() {
         this("Empty Scene", "");
     }
 

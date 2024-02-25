@@ -2,20 +2,20 @@ package textrpg.game;
 
 import java.util.Scanner;
 
-import textrpg.models.GameScene;
+import textrpg.models.Scene;
 import textrpg.models.Action;
 import textrpg.utils.Utils;
 
 public class SceneController {
     Scanner in;
 
-    GameScene currentScene;
+    Scene currentScene;
 
     public SceneController() {
         in = new Scanner(System.in);
     }
 
-    public void playScene(GameScene scene) {
+    public void playScene(Scene scene) {
         String title = String.format("~~ %s ~~", scene.getTitle());
         String border = Utils.getBorderString(title);
 

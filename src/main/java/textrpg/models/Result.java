@@ -4,9 +4,9 @@ public class Result {
 
 
     private String resultDescription;
-    private GameScene nextScene;
+    private Scene nextScene;
 
-    public Result(GameScene nextScene, String resultDescription) {
+    public Result(Scene nextScene, String resultDescription) {
         this.nextScene = nextScene;
         this.resultDescription = resultDescription;
     }
@@ -15,7 +15,7 @@ public class Result {
         this.resultDescription = resultDescription;
     }
 
-    public GameScene getNextScene() {
+    public Scene getNextScene() {
         return nextScene;
     }
 
