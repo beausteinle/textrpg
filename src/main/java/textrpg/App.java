@@ -3,12 +3,11 @@ package textrpg;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import textrpg.dao.implementations.GameSceneDAOImpl;
-import textrpg.dao.interfaces.GameSceneDAO;
+import textrpg.dao.implementations.SceneDAOImpl;
+import textrpg.dao.interfaces.SceneDAO;
 import textrpg.game.SceneController;
-import textrpg.models.GameScene;
+import textrpg.models.Scene;
 import textrpg.models.Action;
 
 import java.io.IOException;
@@ -18,11 +17,11 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    private static javafx.scene.Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        scene = new javafx.scene.Scene(loadFXML("primary"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
@@ -41,11 +40,11 @@ public class App extends Application {
 
         SceneController sceneController = new SceneController();
 
-        GameSceneDAO gsDAO = new GameSceneDAOImpl();
+        SceneDAO gsDAO = new SceneDAOImpl();
 
-        // GameScene startingScene = new GameScene("A Journey's First Step",
+        // Scene startingScene = new Scene("A Journey's First Step",
         // "Our hero boldly ventures out into the world.");
-        GameScene startingScene = gsDAO.getById(1);
+        Scene startingScene = gsDAO.getById(1);
 
         Action exploreForest = new Action("Explore the forest", "Venture into the forest to gather supplies",
                 "Found: Wild Game");
