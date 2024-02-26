@@ -9,6 +9,7 @@ import textrpg.dao.interfaces.SceneDAO;
 import textrpg.game.SceneController;
 import textrpg.models.Scene;
 import textrpg.models.Action;
+import textrpg.utils.ActionType;
 
 import java.io.IOException;
 
@@ -46,11 +47,11 @@ public class App extends Application {
         // "Our hero boldly ventures out into the world.");
         Scene startingScene = gsDAO.getById(1);
 
-        Action exploreForest = new Action("Explore the forest", "Venture into the forest to gather supplies",
+        Action exploreForest = new Action(ActionType.EVENT_TRIGGER,"Explore the forest", "Venture into the forest to gather supplies",
                 "Found: Wild Game");
-        Action buildCampsite = new Action("Prepare campsite",
+        Action buildCampsite = new Action(ActionType.EVENT_TRIGGER,"Prepare campsite",
                 "Gather materials from the immediate area and build a campsite for the night", "Health Restored");
-        Action goHome = new Action("Go back home",
+        Action goHome = new Action(ActionType.EVENT_TRIGGER,"Go back home",
                 "You know, maybe this adventuring stuff isn't really for me. I'm just gonna head home.", "The End");
 
         Action[] actions = new Action[] { exploreForest, buildCampsite, goHome };
