@@ -17,3 +17,12 @@ VALUES
     (8, 1, 'Treehouse Village', 'Wooden platforms and rope bridges crisscross between the branches of towering trees, forming a treetop village high above the forest floor. Lanterns sway gently in the breeze, casting a warm glow over the rustic dwellings below.'),
     (9, 1, 'Mystic Ruins', 'Ancient stone ruins peek out from beneath a blanket of moss and ivy, hinting at a long-forgotten civilization that once thrived within the heart of the forest. Symbols etched into weathered stone whisper secrets of times long past.');
 
+UPDATE scene set location_key = ('A1') WHERE scene_id = 1;
+UPDATE scene set location_key = ('B1') WHERE scene_id = 2;
+UPDATE scene set location_key = ('C1') WHERE scene_id = 3;
+UPDATE scene set location_key = ('A2') WHERE scene_id = 4;
+UPDATE scene set location_key = ('B2') WHERE scene_id = 5;
+UPDATE scene set location_key = ('C2') WHERE scene_id = 6;
+UPDATE scene set location_key = ('A3') WHERE scene_id = 7;
+UPDATE scene set location_key = ('B3') WHERE scene_id = 8;
+UPDATE scene set location_key = ('C3') WHERE scene_id = 9;
