@@ -1,10 +1,8 @@
 package textrpg;
 
-import java.io.IOException;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
+import java.util.concurrent.TimeUnit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import textrpg.dao.implementations.SceneDAOImpl;
 import textrpg.dao.interfaces.SceneDAO;
 import textrpg.game.SceneController;
@@ -12,36 +10,22 @@ import textrpg.models.Action;
 import textrpg.models.Scene;
 import textrpg.utils.ActionType;
 
-/** JavaFX App */
-public class App extends Application {
+public class App {
+  private static Logger logger = LoggerFactory.getLogger(App.class);
 
-  private static javafx.scene.Scene scene;
-
-  @Override
-  public void start(Stage stage) throws IOException {
-    scene = new javafx.scene.Scene(loadFXML("primary"), 640, 480);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  static void setRoot(String fxml) throws IOException {
-    scene.setRoot(loadFXML(fxml));
-  }
-
-  private static Parent loadFXML(String fxml) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-    return fxmlLoader.load();
-  }
-
-  public static void main(String[] args) {
-    // launch();
-
+  public static void main(String[] args) throws InterruptedException {
+    logger.info("Starting application...");
     SceneController sceneController = new SceneController();
+
+    logger.debug("THIS IS A DEBUG LOG");
+
+    for (int i = 1; i < 1000000; i++) {
+      logger.info("Test Rolling Log: " + i);
+      TimeUnit.MILLISECONDS.sleep(1);
+    }
 
     SceneDAO gsDAO = new SceneDAOImpl();
 
-    // Scene startingScene = new Scene("A Journey's First Step",
-    // "Our hero boldly ventures out into the world.");
     Scene startingScene = gsDAO.getById(1);
 
     Action exploreForest =
@@ -68,5 +52,6 @@ public class App extends Application {
     startingScene.setActions(actions);
 
     sceneController.playScene(startingScene);
+    logger.info("Closing application...");
   }
 }
