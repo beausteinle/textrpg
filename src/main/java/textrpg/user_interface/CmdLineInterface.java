@@ -16,7 +16,14 @@ public class CmdLineInterface implements UserInterface {
 
   @Override
   public String displayActions(Action[] actions) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'displayActions'");
+    String message = "What would you like to do?";
+    String border = Utils.getBorderString(message);
+    message += "\n" + border + "\n";
+
+    for (int i = 0; i < actions.length; i++) {
+      message += String.format("%d - %s\n", i + 1, actions[i].getActionText());
+    }
+
+    return message;
   }
 }
