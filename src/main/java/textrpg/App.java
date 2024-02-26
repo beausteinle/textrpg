@@ -1,6 +1,5 @@
 package textrpg;
 
-import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import textrpg.dao.implementations.SceneDAOImpl;
@@ -15,14 +14,8 @@ public class App {
 
   public static void main(String[] args) throws InterruptedException {
     logger.info("Starting application...");
+
     SceneController sceneController = new SceneController();
-
-    logger.debug("THIS IS A DEBUG LOG");
-
-    for (int i = 1; i < 1000000; i++) {
-      logger.info("Test Rolling Log: " + i);
-      TimeUnit.MILLISECONDS.sleep(1);
-    }
 
     SceneDAO gsDAO = new SceneDAOImpl();
 
