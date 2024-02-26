@@ -24,17 +24,17 @@ public class SceneController {
         System.out.println(scene.getDescription());
         System.out.println();
 
-        displayOptions(scene.getActions());
+        displayActions(scene.getActions());
 
         System.out.println(getSelection(scene.getActions()).getResult().getResultDescription());
     }
 
-    public void displayOptions(Action[] actions) {
+    public void displayActions(Action[] actions) {
         String message = "What would you like to do?";
         System.out.println(message);
         System.out.println(Utils.getBorderString(message));
         for (int i = 0; i < actions.length; i++) {
-            System.out.printf("%d - %s\n", i + 1, actions[i].getOptionText());
+            System.out.printf("%d - %s\n", i + 1, actions[i].getActionText());
         }
     }
 

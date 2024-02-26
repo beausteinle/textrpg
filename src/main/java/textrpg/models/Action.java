@@ -12,7 +12,7 @@ public class Action {
         this.result = new Result(result);
     }
 
-    public String getOptionText() {
+    public String getActionText() {
         return String.format("%s: %s", title, description);
     }
 
