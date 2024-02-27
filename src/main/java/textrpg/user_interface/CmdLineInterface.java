@@ -4,6 +4,7 @@ import java.util.Scanner;
 import textrpg.models.Action;
 import textrpg.models.Scene;
 import textrpg.utils.Utils;
+import textrpg.utils.WorldPosition;
 
 public class CmdLineInterface implements UserInterface {
   private Scanner in;
@@ -40,5 +41,24 @@ public class CmdLineInterface implements UserInterface {
     int selection = in.nextInt();
 
     return actions[selection - 1];
+  }
+
+  public WorldPosition getNextPosition(WorldPosition currentPosition) {
+    WorldPosition nextPosition = new WorldPosition(currentPosition);
+    System.out.println("Enter the direction you wish to travel! (n, e, s, w): ");
+    String direction = in.next();
+    direction = direction.toLowerCase();
+    if (direction.startsWith("n")) {
+      nextPosition.setyLocation(nextPosition.getyLocation() + 1);
+    } else if (direction.startsWith("e")) {
+      nextPosition.setxLocation(nextPosition.getxLocation() + 1);
+    } else if (direction.startsWith("s")) {
+      nextPosition.setyLocation(nextPosition.getyLocation() - 1);
+    } else if (direction.startsWith("w")) {
+      nextPosition.setxLocation(nextPosition.getxLocation() - 1);
+    } else {
+      // TODO Error handling
+    }
+    return nextPosition;
   }
 }

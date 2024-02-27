@@ -1,19 +1,25 @@
 package textrpg.models;
 
+import textrpg.utils.WorldPosition;
+
 public class Scene {
   String title;
   String description;
-  String locationKey;
+  WorldPosition worldPosition;
   Action[] actions;
 
-  public Scene(String title, String description, String locationKey) {
-    this.title = title;
-    this.description = description;
-    this.locationKey = locationKey;
+  public Scene() {
+    this("Empty Scene", "", new WorldPosition(0, 0, 0));
   }
 
-  public Scene() {
-    this("Empty Scene", "", "");
+  public Scene(String title, String description, WorldPosition worldPosition) {
+    this.title = title;
+    this.description = description;
+    this.worldPosition = worldPosition;
+  }
+
+  public Scene(String title, String description, int regionId, int xLocation, int yLocation) {
+    this(title, description, new WorldPosition(regionId, xLocation, yLocation));
   }
 
   public String getTitle() {
@@ -24,11 +30,11 @@ public class Scene {
     return description;
   }
 
-  public void setActions(Action[] actions) {
-    this.actions = actions;
-  }
-
   public Action[] getActions() {
     return actions;
+  }
+
+  public void setActions(Action[] actions) {
+    this.actions = actions;
   }
 }

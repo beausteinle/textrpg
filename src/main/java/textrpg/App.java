@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import textrpg.dao.implementations.SceneDAOImpl;
 import textrpg.dao.interfaces.SceneDAO;
-import textrpg.game.SceneController;
+import textrpg.game.GameController;
 import textrpg.models.Action;
 import textrpg.models.Scene;
 import textrpg.utils.ActionType;
@@ -15,7 +15,7 @@ public class App {
   public static void main(String[] args) throws InterruptedException {
     logger.info("Starting application...");
 
-    SceneController sceneController = new SceneController();
+    GameController gameController = new GameController();
 
     SceneDAO gsDAO = new SceneDAOImpl();
 
@@ -44,7 +44,7 @@ public class App {
 
     startingScene.setActions(actions);
 
-    sceneController.playScene(startingScene);
+    gameController.playScene(startingScene);
     logger.info("Closing application...");
   }
 }

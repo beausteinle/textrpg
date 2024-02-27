@@ -26,3 +26,19 @@ UPDATE scene set location_key = ('C2') WHERE scene_id = 6;
 UPDATE scene set location_key = ('A3') WHERE scene_id = 7;
 UPDATE scene set location_key = ('B3') WHERE scene_id = 8;
 UPDATE scene set location_key = ('C3') WHERE scene_id = 9;
+
+ALTER TABLE scene add yLocation integer;
+ALTER TABLE scene add xLocation integer;
+
+update scene
+set xLocation = case substr(location_key, 1, 1)
+                    when 'A' then 0
+                    when 'B' then 1
+                    when 'C' then 2 end,
+    yLocation = cast(substr(location_key, 2) AS integer) -1
+;
+
+ALTER table scene drop location_key;
+
+alter table scene rename xLocation to x_location;
+alter table scene rename yLocation to y_location;
