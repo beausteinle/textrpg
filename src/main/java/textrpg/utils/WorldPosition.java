@@ -11,6 +11,13 @@ public class WorldPosition {
     this.yLocation = yLocation;
   }
 
+  public WorldPosition(WorldPosition copyWorldPosition) {
+    this(
+        copyWorldPosition.getRegionId(),
+        copyWorldPosition.getxLocation(),
+        copyWorldPosition.yLocation);
+  }
+
   public int getRegionId() {
     return regionId;
   }
