@@ -1,4 +1,32 @@
-DROP TABLE IF EXISTS action_type;
+PRAGMA foreign_keys = ON;
+
+create table region(region_id integer primary key, name text not null, description text);
+create table scene(
+    scene_id integer primary key,
+    region_id integer, 
+    x_position integer, 
+    y_position integer, 
+    title text, 
+    description text
+)
+;
+
+create table character_state(
+    character_state_id integer primary key, 
+    current_region_id integer, 
+    x_position integer, 
+    y_position integer
+)
+;
+
+create table world_state(
+    world_state_id integer primary key, 
+    character_state_id integer,
+    foreign key (character_state_id references character_state(character_state)
+)
+;
+   
+create table action_type (action_type_id integer primary key, action_type text not null);
 
 CREATE TABLE action_type (action_type_id INTEGER PRIMARY KEY, action_type text NOT NULL);
 
