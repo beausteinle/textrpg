@@ -1,5 +1,6 @@
 package textrpg.game;
 
+import java.util.Scanner;
 import textrpg.dao.implementations.SceneDAOImpl;
 import textrpg.dao.interfaces.SceneDAO;
 import textrpg.models.Action;
@@ -9,12 +10,9 @@ import textrpg.user_interface.CmdLineInterface;
 import textrpg.user_interface.UserInterface;
 import textrpg.utils.WorldPosition;
 
-import java.util.Scanner;
-
 public class GameController {
   Scanner in;
   WorldState worldState;
-
 
   Scene currentScene;
 
@@ -33,10 +31,9 @@ public class GameController {
     System.out.println(selectedAction.getResult().getResultDescription());
   }
 
-
   /**
-   * Moves the character to the next position in the game world and retrieves the scene
-   * at that location.
+   * Moves the character to the next position in the game world and retrieves the scene at that
+   * location.
    *
    * @return The scene at the next position after the character moves.
    */

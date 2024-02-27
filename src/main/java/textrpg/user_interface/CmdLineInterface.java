@@ -51,13 +51,13 @@ public class CmdLineInterface implements UserInterface {
     if (direction.startsWith("n")) {
       nextPosition.setyLocation(nextPosition.getyLocation() + 1);
     } else if (direction.startsWith("e")) {
-        nextPosition.setxLocation(nextPosition.getxLocation() + 1);
+      nextPosition.setxLocation(nextPosition.getxLocation() + 1);
     } else if (direction.startsWith("s")) {
       nextPosition.setyLocation(nextPosition.getyLocation() - 1);
     } else if (direction.startsWith("w")) {
       nextPosition.setxLocation(nextPosition.getxLocation() - 1);
     } else {
-      //TODO Error handling
+      // TODO Error handling
     }
     return nextPosition;
   }

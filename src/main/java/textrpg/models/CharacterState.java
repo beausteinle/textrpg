@@ -16,7 +16,4 @@ public class CharacterState {
   public void setWorldPosition(WorldPosition worldPosition) {
     this.worldPosition = worldPosition;
   }
-
-
-
 }
