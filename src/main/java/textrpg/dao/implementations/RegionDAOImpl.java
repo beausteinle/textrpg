@@ -22,7 +22,7 @@ public class RegionDAOImpl implements RegionDAO {
       String title = result.getString("title");
       String description = result.getString("description");
 
-      return new Region(title, description);
+      return new Region(region_id, title, description);
     } catch (SQLException err) {
       System.err.println(err.getMessage());
     }
