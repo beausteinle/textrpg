@@ -1,4 +1,4 @@
-<configuration debug="true">
+<configuration>
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>logs/myapp.log</file>
         <encoder>
