@@ -3,36 +3,33 @@ package textrpg.models;
 import textrpg.utils.ActionType;
 
 public class Action {
-    String title;
-    String description;
+  String title;
+  String description;
 
-    Result result;
+  Result result;
 
-    ActionType actionType;
+  ActionType actionType;
 
-    public Action(ActionType actionType, String title, String description, String result) {
+  public Action(ActionType actionType, String title, String description, String result) {
 
-        this.title = title;
-        this.description = description;
-        this.result = new Result(result);
-    }
+    this.title = title;
+    this.description = description;
+    this.result = new Result(result);
+  }
 
-    public ActionType getActionType(){
-        return actionType;
-    }
+  public ActionType getActionType() {
+    return actionType;
+  }
 
-    public void setActionType(){
-        this.actionType = actionType;
-    }
+  public void setActionType() {
+    this.actionType = actionType;
+  }
 
-    public String getActionText() {
-        return String.format("%s: %s", title, description);
-    }
+  public String getActionText() {
+    return String.format("%s: %s", title, description);
+  }
 
-    public Result getResult() {
-        return result;
-    }
-
-
-
+  public Result getResult() {
+    return result;
+  }
 }
