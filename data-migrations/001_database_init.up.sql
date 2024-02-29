@@ -4,7 +4,7 @@ pragma foreign_keys = on
 create table if not exists
   region (
     region_id integer primary key,
-    name text not null,
+    name text,
     description text
   )
 ;
