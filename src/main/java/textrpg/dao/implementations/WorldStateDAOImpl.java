@@ -16,8 +16,8 @@ public class WorldStateDAOImpl implements WorldStateDAO {
         select
           ws.world_state_id,
           cs.current_region_id as region_id,
-          cs.x_position,
-          cs.y_position
+          cs.x_location,
+          cs.y_location
         from world_state ws
           join character_state cs on ws.character_state_id = cs.character_state_id
         where ws.world_state_id = ?
@@ -34,8 +34,8 @@ public class WorldStateDAOImpl implements WorldStateDAO {
 
       int worldStateId = result.getInt("world_state_id");
       int regionId = result.getInt("region_id");
-      int xPosition = result.getInt("x_position");
-      int yPosition = result.getInt("y_position");
+      int xPosition = result.getInt("x_location");
+      int yPosition = result.getInt("y_location");
 
       return new WorldState(
           worldStateId, new CharacterState(new WorldPosition(regionId, xPosition, yPosition)));
