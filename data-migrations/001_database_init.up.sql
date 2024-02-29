@@ -1,72 +1,63 @@
-PRAGMA foreign_keys = ON;
+pragma foreign_keys = on
+;
 
-create table region(region_id integer primary key, name text not null, description text);
-create table scene(
-    scene_id integer primary key,
-    region_id integer, 
-    x_position integer, 
-    y_position integer, 
-    title text, 
+create table if not exists
+  region (
+    region_id integer primary key,
+    name text,
     description text
-)
+  )
 ;
 
-create table character_state(
-    character_state_id integer primary key, 
-    current_region_id integer, 
-    x_position integer, 
+create table if not exists
+  scene (
+    scene_id integer primary key,
+    region_id integer,
+    x_position integer,
+    y_position integer,
+    title text,
+    description text,
+    foreign key (region_id) references region (region_id)
+  )
+;
+
+create table if not exists
+  character_state (
+    character_state_id integer primary key,
+    current_region_id integer,
+    x_position integer,
     y_position integer
-)
+  )
 ;
 
-create table world_state(
-    world_state_id integer primary key, 
+create table if not exists
+  world_state (
+    world_state_id integer primary key,
     character_state_id integer,
-    foreign key (character_state_id references character_state(character_state)
-)
-;
-   
-create table action_type (action_type_id integer primary key, action_type text not null);
-
-CREATE TABLE action_type (action_type_id INTEGER PRIMARY KEY, action_type text NOT NULL);
-
-INSERT INTO action_type(action_type)
-VALUES ('NAVIGATION'), ('EVENT_TRIGGER');
-
-INSERT INTO scene (scene_id, region_id, title, description)
-VALUES
-    (1, 1, 'Starting House', 'You stand at the threshold of your humble abode, a rustic cabin nestled deep within the heart of the forest. Sunlight filters through the dense canopy overhead, dappling the forest floor with patches of golden light.'),
-    (2, 1, 'Forest Clearing', 'A tranquil clearing bathed in dappled sunlight lies within the embrace of the forest. Tall trees surround you, their leaves whispering in the breeze, and a carpet of wildflowers blooms at your feet.'),
-    (3, 1, 'Riverbank', 'The gentle murmur of a meandering stream soothes your senses as you stand on its grassy banks. Overhanging branches provide shade from the midday sun, and the cool water beckons you to dip your toes in its refreshing embrace.'),
-    (4, 1, 'Cave Entrance', 'A gaping maw in the side of a rocky outcrop marks the entrance to a mysterious cave system hidden within the depths of the forest. Cool air wafts from within, carrying with it the scent of damp earth and adventure.'),
-    (5, 1, 'Old Growth Grove', 'Ancient trees tower overhead, their gnarled branches forming a canopy so dense that little light penetrates to the forest floor. Moss-covered roots twist and coil around massive boulders, hinting at the forest''s primordial origins.'),
-    (6, 1, 'Wildlife Clearing', 'The forest comes alive with the sights and sounds of nature in this bustling clearing. Deer graze peacefully among the ferns, birds flit from branch to branch, and squirrels scamper playfully around the trunks of towering trees.'),
-    (7, 1, 'Herbalist''s Hut', 'A quaint wooden hut sits nestled among the trees, its walls adorned with bundles of drying herbs and potted plants. The scent of medicinal plants hangs heavy in the air, and the sound of bubbling cauldrons emanates from within.'),
-    (8, 1, 'Treehouse Village', 'Wooden platforms and rope bridges crisscross between the branches of towering trees, forming a treetop village high above the forest floor. Lanterns sway gently in the breeze, casting a warm glow over the rustic dwellings below.'),
-    (9, 1, 'Mystic Ruins', 'Ancient stone ruins peek out from beneath a blanket of moss and ivy, hinting at a long-forgotten civilization that once thrived within the heart of the forest. Symbols etched into weathered stone whisper secrets of times long past.');
-
-UPDATE scene set location_key = ('A1') WHERE scene_id = 1;
-UPDATE scene set location_key = ('B1') WHERE scene_id = 2;
-UPDATE scene set location_key = ('C1') WHERE scene_id = 3;
-UPDATE scene set location_key = ('A2') WHERE scene_id = 4;
-UPDATE scene set location_key = ('B2') WHERE scene_id = 5;
-UPDATE scene set location_key = ('C2') WHERE scene_id = 6;
-UPDATE scene set location_key = ('A3') WHERE scene_id = 7;
-UPDATE scene set location_key = ('B3') WHERE scene_id = 8;
-UPDATE scene set location_key = ('C3') WHERE scene_id = 9;
-
-ALTER TABLE scene add yLocation integer;
-ALTER TABLE scene add xLocation integer;
-
-update scene
-set xLocation = case substr(location_key, 1, 1)
-                    when 'A' then 0
-                    when 'B' then 1
-                    when 'C' then 2 end,
-    yLocation = cast(substr(location_key, 2) AS integer) -1
+    foreign key (character_state_id) references character_state (character_state)
+  )
 ;
 
-ALTER table scene drop location_key;
+create table if not exists
+  action_type (
+    action_type_id integer primary key,
+    action_type text not null
+  )
+;
 
-alter table scene rename xLocation to x_location;
-alter table scene rename yLocation to y_location;
+create table if not exists
+  action (
+    action_id integer primary key,
+    scene_id integer,
+    description text,
+    outcome text,
+    foreign key (scene_id) references scene (scene_id)
+  )
+;
+
+insert into
+  action_type (action_type)
+values
+  ('NAVIGATION'),
+  ('EVENT_TRIGGER')
+;
