@@ -4,7 +4,6 @@ drop table if exists action
 drop table if exists action_type
 ;
 
-
 drop table if exists world_state
 ;
 
