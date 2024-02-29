@@ -13,8 +13,8 @@ create table if not exists
   scene (
     scene_id integer primary key,
     region_id integer,
-    x_position integer,
-    y_position integer,
+    x_location integer,
+    y_location integer,
     title text,
     description text,
     foreign key (region_id) references region (region_id)
@@ -25,8 +25,8 @@ create table if not exists
   character_state (
     character_state_id integer primary key,
     current_region_id integer,
-    x_position integer,
-    y_position integer
+    x_location integer,
+    y_location integer
   )
 ;
 

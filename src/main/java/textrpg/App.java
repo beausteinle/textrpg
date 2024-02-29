@@ -2,12 +2,10 @@ package textrpg;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import textrpg.dao.implementations.SceneDAOImpl;
-import textrpg.dao.interfaces.SceneDAO;
+import textrpg.dao.implementations.WorldStateDAOImpl;
+import textrpg.dao.interfaces.WorldStateDAO;
 import textrpg.game.GameController;
-import textrpg.models.Action;
-import textrpg.models.Scene;
-import textrpg.utils.ActionType;
+import textrpg.models.WorldState;
 
 public class App {
   private static Logger logger = LoggerFactory.getLogger(App.class);
@@ -15,36 +13,15 @@ public class App {
   public static void main(String[] args) throws InterruptedException {
     logger.info("Starting application...");
 
-    GameController gameController = new GameController();
+    WorldStateDAO worldStateDAO = new WorldStateDAOImpl();
 
-    SceneDAO gsDAO = new SceneDAOImpl();
+    WorldState worldState = worldStateDAO.getWorldStateById(1);
+    GameController gameController = new GameController(worldState);
 
-    Scene startingScene = gsDAO.getById(1);
+    while (true) {
+      gameController.playCurrentScene();
+    }
 
-    Action exploreForest =
-        new Action(
-            ActionType.EVENT_TRIGGER,
-            "Explore the forest",
-            "Venture into the forest to gather supplies",
-            "Found: Wild Game");
-    Action buildCampsite =
-        new Action(
-            ActionType.EVENT_TRIGGER,
-            "Prepare campsite",
-            "Gather materials from the immediate area and build a campsite for the night",
-            "Health Restored");
-    Action goHome =
-        new Action(
-            ActionType.EVENT_TRIGGER,
-            "Go back home",
-            "You know, maybe this adventuring stuff isn't really for me. I'm just gonna head home.",
-            "The End");
-
-    Action[] actions = new Action[] {exploreForest, buildCampsite, goHome};
-
-    startingScene.setActions(actions);
-
-    gameController.playScene(startingScene);
-    logger.info("Closing application...");
+    // logger.info("Closing application...");
   }
 }

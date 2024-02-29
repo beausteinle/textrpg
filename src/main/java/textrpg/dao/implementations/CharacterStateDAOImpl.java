@@ -23,8 +23,8 @@ public class CharacterStateDAOImpl implements CharacterStateDAO {
       ResultSet result = stmt.executeQuery();
 
       int regionId = result.getInt("region_id");
-      int xPosition = result.getInt("x_position");
-      int yPosition = result.getInt("y_position");
+      int xPosition = result.getInt("x_location");
+      int yPosition = result.getInt("y_location");
 
       return new CharacterState(new WorldPosition(regionId, xPosition, yPosition));
     } catch (SQLException err) {
