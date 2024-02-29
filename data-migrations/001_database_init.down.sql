@@ -1,6 +1,18 @@
-drop table scene;
-drop table region;
-drop table action;
-drop table action_type;
-drop table character_state;
-drop table world_state;
+drop table if exists action
+;
+
+drop table if exists action_type
+;
+
+
+drop table if exists world_state
+;
+
+drop table if exists character_state
+;
+
+drop table if exists scene
+;
+
+drop table if exists region
+;
