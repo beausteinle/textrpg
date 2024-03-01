@@ -68,3 +68,18 @@ values ('NAVIGATION'),
        ('EVENT_TRIGGER')
 ;
 
+insert into action (action_type_id, description, outcome)
+VALUES (1, 'Leave...', ''
+)
+;
+
+INSERT INTO scene_action_link (scene_id, action_id) SELECT scene_id, 1 FROM scene
+;
+
+CREATE TABLE scene_action_link (
+                                scene_id INTEGER,
+                                action_id INTEGER,
+                                FOREIGN KEY (scene_id) REFERENCES scene(scene_id),
+                                FOREIGN KEY (action_id) REFERENCES action(action_id),
+                                PRIMARY KEY (scene_id, action_id)
+);
