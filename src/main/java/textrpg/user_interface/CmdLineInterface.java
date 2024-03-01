@@ -15,10 +15,20 @@ public class CmdLineInterface implements UserInterface {
 
   @Override
   public void displayScene(Scene scene) {
+
     String title = String.format("~~ %s ~~", scene.getTitle());
     String border = Utils.getBorderString(title);
 
-    System.out.println(title + "\n" + border + "\n" + scene.getDescription() + "\n");
+    if (scene.getDescription() == null || scene.getTitle() == null) {
+      String theVoid = String.format("~~ %s ~~", "The Void");
+      System.out.println(
+          theVoid
+              + "\n"
+              + border
+              + "\n"
+              + "An Endless Expanse of Potential...And Chaos\nThose Who Can Endure Can Ascend.\n");
+
+    } else System.out.println(title + "\n" + border + "\n" + scene.getDescription() + "\n");
   }
 
   @Override
