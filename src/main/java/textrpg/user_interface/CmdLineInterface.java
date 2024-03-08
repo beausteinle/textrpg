@@ -7,6 +7,8 @@ import textrpg.utils.Utils;
 import textrpg.utils.WorldPosition;
 
 public class CmdLineInterface implements UserInterface {
+  final String RED = "\033[31m";
+  final String RESET = "\033[0m";
   private Scanner in;
 
   public CmdLineInterface() {
@@ -16,7 +18,7 @@ public class CmdLineInterface implements UserInterface {
   @Override
   public void displayScene(Scene scene) {
 
-    String title = String.format("~~ %s ~~", scene.getTitle());
+    String title = String.format("~~ %s%s%s ~~", RED, scene.getTitle(), RESET);
     String border = Utils.getBorderString(title);
 
     if (scene.getDescription() == null || scene.getTitle() == null) {
@@ -28,7 +30,11 @@ public class CmdLineInterface implements UserInterface {
               + "\n"
               + "An Endless Expanse of Potential...And Chaos\nThose Who Can Endure Can Ascend.\n");
 
-    } else System.out.println(title + "\n" + border + "\n" + scene.getDescription() + "\n");
+    } else {
+      System.out.println(title + "\n" + border + "\n" + scene.getDescription() + "\n");
+    }
+
+    displayActions(scene.getActions());
   }
 
   @Override

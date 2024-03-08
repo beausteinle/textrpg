@@ -3,18 +3,18 @@ package textrpg.models;
 import textrpg.utils.ActionType;
 
 public class Action {
+  // TODO ADD actionId Class Attribute
   String title;
   String description;
-
-  Result result;
+  Outcome outcome;
 
   ActionType actionType;
 
-  public Action(ActionType actionType, String title, String description, String result) {
+  public Action(ActionType actionType, String title, String description, String outcome) {
 
     this.title = title;
     this.description = description;
-    this.result = new Result(result);
+    this.outcome = new Outcome(outcome);
   }
 
   public ActionType getActionType() {
@@ -29,7 +29,7 @@ public class Action {
     return String.format("%s: %s", title, description);
   }
 
-  public Result getResult() {
-    return result;
+  public Outcome getResult() {
+    return outcome;
   }
 }

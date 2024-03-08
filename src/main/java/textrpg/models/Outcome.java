@@ -1,16 +1,17 @@
 package textrpg.models;
 
-public class Result {
+public class Outcome {
 
+  // TODO ADD ATTRIBUTE 'resultId'
   private String resultDescription;
   private Scene nextScene;
 
-  public Result(Scene nextScene, String resultDescription) {
+  public Outcome(Scene nextScene, String resultDescription) {
     this.nextScene = nextScene;
     this.resultDescription = resultDescription;
   }
 
-  public Result(String resultDescription) {
+  public Outcome(String resultDescription) {
     this.resultDescription = resultDescription;
   }
 

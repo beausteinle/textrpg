@@ -1,25 +1,28 @@
 package textrpg.models;
 
+import textrpg.dao.implementations.ActionDAOImpl;
+import textrpg.dao.interfaces.ActionDAO;
 import textrpg.utils.WorldPosition;
 
 public class Scene {
+  int sceneId;
   String title;
   String description;
   WorldPosition worldPosition;
   Action[] actions;
 
   public Scene() {
-    this("Empty Scene", "", new WorldPosition(0, 0, 0));
+    this(0, "Empty Scene", "", new WorldPosition(0, 0, 0));
   }
 
-  public Scene(String title, String description, WorldPosition worldPosition) {
+  public Scene(int sceneId, String title, String description, WorldPosition worldPosition) {
+    this.sceneId = sceneId;
     this.title = title;
     this.description = description;
     this.worldPosition = worldPosition;
-  }
 
-  public Scene(String title, String description, int regionId, int xLocation, int yLocation) {
-    this(title, description, new WorldPosition(regionId, xLocation, yLocation));
+    ActionDAO dao = new ActionDAOImpl();
+    this.actions = dao.getActionBySceneId(sceneId);
   }
 
   public String getTitle() {

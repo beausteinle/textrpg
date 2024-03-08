@@ -11,9 +11,20 @@ import textrpg.utils.WorldPosition;
 
 public class SceneDAOImpl implements SceneDAO {
 
-  public static final String GET_SCENE_BY_ID_QUERY = "select * from scene where scene_id = ?";
+  public static final String GET_SCENE_BY_ID_QUERY =
+      """
+        select *
+        from scene
+        where scene_id = ?
+        """;
   public static final String GET_SCENE_BY_LOCATION_KEY_QUERY =
-      "select * from scene where x_location = ? and y_location = ? and region_id = ?";
+      """
+        select *
+        from scene
+        where x_location = ?
+         and y_location = ?
+         and region_id = ?
+        """;
 
   @Override
   public Scene getByLocation(WorldPosition worldPosition) {
@@ -37,8 +48,10 @@ public class SceneDAOImpl implements SceneDAO {
     int regionId = queryResult.getInt("region_id");
     int xLocation = queryResult.getInt("x_location");
     int yLocation = queryResult.getInt("y_location");
+    int sceneId = queryResult.getInt("scene_id");
 
-    return new Scene(title, description, new WorldPosition(regionId, xLocation, yLocation));
+    return new Scene(
+        sceneId, title, description, new WorldPosition(regionId, xLocation, yLocation));
   }
 
   public Scene getById(int scene_id) {

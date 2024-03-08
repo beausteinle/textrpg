@@ -85,3 +85,5 @@ CREATE TABLE scene_action_link
     FOREIGN KEY (action_id) REFERENCES action (action_id),
     PRIMARY KEY (scene_id, action_id)
 );
+
+ALTER TABLE action ADD COLUMN title text;
